@@ -17,14 +17,22 @@ angular.module('starter.controllers', [])
     $location.path('/tab/dash');
   };
 })
-.controller('DashCtrl', function($scope, $location, Users) {
+.controller('DashCtrl', function($scope, $location, Users, $ionicPopup) {
   $scope.users = [];
   $scope.search = function() {
     $scope.users = Users.query();
     console.log($scope.users);
   };
-  $scope.startChatWith = function(userId) {
-    $location.path('/tab/chats/' + userId);
+  $scope.startChatWith = function(user) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Waiting...',
+      template: 'Wait ' + user.name + ' to confirm...',
+      okText: 'Cancel',
+      okType: 'button-assertive'
+    });
+    alertPopup.then(function(res) {
+      console.log('Thank you for not eating my delicious ice cream cone');
+    });
   };
 })
 
