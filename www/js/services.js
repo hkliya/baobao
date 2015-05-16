@@ -7,6 +7,8 @@ angular.module('starter.services', ['ngResource'])
   var appkey = "5556d21627302bb31589348e";
   var yunba = new Yunba({server: 'sock.yunba.io', port: 3000, appkey: appkey});
 
+  $rootScope.messages = [];
+
   var subscribeTopic = function(topicName) {
     yunba.subscribe({'topic': topicName}, function (success, msg) {
       if (success) {
@@ -26,6 +28,9 @@ angular.module('starter.services', ['ngResource'])
         $rootScope.$apply();
       } else {
         console.log(obj.text);
+        $rootScope.messages.push({'text': obj.text, is_sender: false});
+        console.log($rootScope.messages);
+        $rootScope.$apply();
       }
       // $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: data.msg, is_sender: false});
       // $scope.$apply();

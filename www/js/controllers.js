@@ -72,7 +72,7 @@ angular.module('starter.controllers', [])
     $rootScope.alertPopup.close();
   }
 
-  $scope.msg = { text: '' };
+  $scope.msg = {text: ''};
   $scope.sendMessage = function() {
     var text = $scope.msg.text;
     if (text === '') {
@@ -82,7 +82,9 @@ angular.module('starter.controllers', [])
     Yunba.sendText(requesterId, text);
   }
 
-  $scope.msgList = [];
+  $scope.messages = function() {
+    return $rootScope.messages;
+  };
 })
 
 .controller('AccountCtrl', function($scope, $location) {
