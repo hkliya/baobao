@@ -7,7 +7,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "query-object": "~2.0.2",
-    "socket.io": "~1.3.5",
-    "yunba-javascript-sdk": "yunba/yunba-javascript-sdk"
+    "yunba-javascript-sdk": "yunba/yunba-javascript-sdk",
+    "ngSocketIO": "mbenford/ngSocketIO#~0.2.0"
   }
 }
