@@ -45,17 +45,34 @@ angular.module('starter.controllers', [])
 .controller('ChatsCtrl', function($scope) {
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, $location) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, $location, $ionicPopup) {
   $scope.msg = { text: '' };
   $scope.sendMessage = function() {
     var text = $scope.msg.text;
     if (text === '') {
       return;
     }
-
   }
 
   $scope.msgList = [];
+
+  var showConfirmDialog = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Accept session',
+      template: 'Are you sure you want to chat with tjd?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+    });
+  };
+  var isRequest = $location.search().isRequest;
+  if (isRequest) {
+    showConfirmDialog();
+  }
 })
 
 .controller('AccountCtrl', function($scope, $location) {

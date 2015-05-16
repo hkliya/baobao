@@ -19,7 +19,7 @@ angular.module('starter.services', ['ngResource'])
       console.log('Topic:' + data.topic + ',Msg:' + data.msg);
       var obj = JSON.parse(data.msg);
       if (obj.cmd === 'requestSession') {
-        $location.path('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length));
+        $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length) + '?isRequest=true');
         $rootScope.$apply();
       }
       // $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: data.msg, is_sender: false});
