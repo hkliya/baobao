@@ -21,9 +21,11 @@ angular.module('starter.services', ['ngResource'])
       if (obj.cmd === 'requestSession') {
         $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length) + '?isRequest=true&rnd=' + Math.random());
         $rootScope.$apply();
-      } else {
+      } else if (obj.cmd === 'confirmSession') {
         $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length));
         $rootScope.$apply();
+      } else {
+        console.log(obj.text);
       }
       // $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: data.msg, is_sender: false});
       // $scope.$apply();
@@ -70,6 +72,12 @@ angular.module('starter.services', ['ngResource'])
      var str = {"cmd": "confirmSession", "srcTopic": 'Topic-' + userId};
      return JSON.stringify(str);
   };
+
+  var constructTextMessage = function(userId, text) {
+     var str = {"cmd": "text", "text": text};
+     return JSON.stringify(str);
+  };
+
   var requestSession = function(confirmerId) {
     console.log(confirmerId)
     sendMessage(confirmerId, constructMessage(this.userId));
@@ -79,9 +87,14 @@ angular.module('starter.services', ['ngResource'])
     sendMessage(requesterId, constructConfirmMessage(this.userId));
   };
 
+  var sendText = function(to, text) {
+    sendMessage(to, constructTextMessage(this.userId, text));
+  };
+
   return {
     init: init,
     requestSession: requestSession,
+    sendText: sendText,
     confirmSession: confirmSession
   }
 });

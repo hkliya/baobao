@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($scope, $http, $location, Yunba, $rootScope) {
   var getUserIdFromUsername = function(username) {
-    if (username === 'tjd@163.com') {
+    if (username === 'a') {
       return 1;
     }
     return 2;
@@ -72,15 +72,17 @@ angular.module('starter.controllers', [])
     $rootScope.alertPopup.close();
   }
 
-  // $scope.msg = { text: '' };
-  // $scope.sendMessage = function() {
-  //   var text = $scope.msg.text;
-  //   if (text === '') {
-  //     return;
-  //   }
-  // }
+  $scope.msg = { text: '' };
+  $scope.sendMessage = function() {
+    var text = $scope.msg.text;
+    if (text === '') {
+      return;
+    }
 
-  // $scope.msgList = [];
+    Yunba.sendText(requesterId, text);
+  }
+
+  $scope.msgList = [];
 })
 
 .controller('AccountCtrl', function($scope, $location) {
