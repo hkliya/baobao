@@ -56,12 +56,17 @@ angular.module('starter.controllers', [])
     $scope.$apply();
   });
 
-  $scope.msg = {};
+  $scope.msg = { text: '' };
   $scope.sendMessage = function() {
-    yunba.publish({'topic': 'my_topic', 'msg': $scope.msg.text},
+    var text = $scope.msg.text;
+    if (text === '') {
+      return;
+    }
+
+    yunba.publish({'topic': 'my_topic', 'msg': text},
       function (success, msg) {
         if (success) {
-          $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: $scope.msg.text, is_sender: true});
+          $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: text, is_sender: true});
           $scope.$apply();
           console.log('消息发布成功');
         } else {
