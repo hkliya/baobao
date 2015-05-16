@@ -1,5 +1,23 @@
 angular.module('starter.controllers', [])
 
+.controller('LoginCtrl', function($scope, $http, $location) {
+  var getUserIdFromUsername = function(username) {
+    if (username === 'tjd@163.com') {
+      return 1;
+    }
+    return 2;
+  };
+
+  $scope.user = {};
+  $scope.login = function() {
+    console.log('logined')
+    $http.defaults.headers.common = {
+      'user_id': getUserIdFromUsername($scope.user.name)
+    };
+
+    $location.path('/tab/dash');
+  };
+})
 .controller('DashCtrl', function($scope, $location, Users) {
   $scope.users = [];
   $scope.search = function() {
@@ -75,8 +93,8 @@ angular.module('starter.controllers', [])
   $scope.msgList = [];
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('AccountCtrl', function($scope, $location) {
+  $scope.logout = function() {
+    $location.path('/login');
   };
 });
