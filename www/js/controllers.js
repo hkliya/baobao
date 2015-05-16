@@ -10,7 +10,6 @@ angular.module('starter.controllers', [])
 
   $scope.user = {};
   $scope.login = function() {
-    console.log('logined')
     $http.defaults.headers.common = {
       'user_id': getUserIdFromUsername($scope.user.name)
     };
