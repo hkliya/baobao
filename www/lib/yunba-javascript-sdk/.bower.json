@@ -1,0 +1,14 @@
+{
+  "name": "yunba-javascript-sdk",
+  "homepage": "https://github.com/yunba/yunba-javascript-sdk",
+  "_release": "23d183609d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "23d183609d63e81b4c9320d5d8aa89d63f83945f"
+  },
+  "_source": "git://github.com/yunba/yunba-javascript-sdk.git",
+  "_target": "*",
+  "_originalSource": "yunba/yunba-javascript-sdk",
+  "_direct": true
+}
