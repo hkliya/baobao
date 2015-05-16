@@ -1,27 +1,27 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
-        </div>
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Tag">
+        </label>
+        <button class="button button-small" ng-click="search()">
+          Search
+        </button>
       </div>
     </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
+    <div class="list card" ng-repeat="user in users">
+      <div class="item item-avatar">
+        <img src="{{user.avatar}}">
+        <div class="row">
+          <div class="col col-75">
+            <h2>{{user.name}}</h2>
+          </div>
+          <div class="col col-25">
+            <h2>{{user.status}}</h2>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
+        <p>{{user.bio}}</p>
       </div>
     </div>
   </ion-content>

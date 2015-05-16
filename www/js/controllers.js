@@ -1,6 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
+  $scope.users = [];
+  $scope.search = function() {
+    $scope.users = [
+      {avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'张小花', status:'idle', gender:'f', bio: '我就是我'},
+      {avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'谭金都', status:'idle', gender:'f', bio: '生活是一种修行'},
+      {avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'王燕玲', status:'busy', gender:'f', bio: '不在读书，就在旅行'},
+      {avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'何东洋', status:'idle', gender:'m', bio: '求交往'}
+    ];
+  };
+})
 
 .controller('ChatsCtrl', function($scope) {
 })
