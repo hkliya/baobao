@@ -39,40 +39,48 @@ angular.module('starter.controllers', [])
     alertPopup.then(function(res) {
       console.log('Thank you for not eating my delicious ice cream cone');
     });
+
+    $rootScope.alertPopup = alertPopup;
   };
 })
 
 .controller('ChatsCtrl', function($scope) {
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, $location, $ionicPopup) {
-  $scope.msg = { text: '' };
-  $scope.sendMessage = function() {
-    var text = $scope.msg.text;
-    if (text === '') {
-      return;
-    }
-  }
-
-  $scope.msgList = [];
-
-  var showConfirmDialog = function() {
+.controller('ChatDetailCtrl', function($scope, $stateParams, $location, $ionicPopup, Yunba, $rootScope) {
+  var showConfirmDialog = function(userId) {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Accept session',
       template: 'Are you sure you want to chat with tjd?'
     });
     confirmPopup.then(function(res) {
       if(res) {
-        console.log('You are sure');
+        Yunba.confirmSession(userId);
       } else {
         console.log('You are not sure');
       }
     });
   };
+
   var isRequest = $location.search().isRequest;
+  var requesterId = $location.path().match(/\/\w+\/(\d+)/)[1];
+  console.log('isRequest:' + isRequest);
   if (isRequest) {
-    showConfirmDialog();
+    showConfirmDialog(requesterId);
+  } else {
+    console.log($rootScope.alertPopup);
+    $rootScope.alertPopup.close();
   }
+
+  // $scope.msg = { text: '' };
+  // $scope.sendMessage = function() {
+  //   var text = $scope.msg.text;
+  //   if (text === '') {
+  //     return;
+  //   }
+  // }
+
+  // $scope.msgList = [];
 })
 
 .controller('AccountCtrl', function($scope, $location) {

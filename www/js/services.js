@@ -19,7 +19,10 @@ angular.module('starter.services', ['ngResource'])
       console.log('Topic:' + data.topic + ',Msg:' + data.msg);
       var obj = JSON.parse(data.msg);
       if (obj.cmd === 'requestSession') {
-        $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length) + '?isRequest=true');
+        $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length) + '?isRequest=true&rnd=' + Math.random());
+        $rootScope.$apply();
+      } else {
+        $location.url('/tab/chats/' + obj.srcTopic.substring(obj.srcTopic.length - 1, obj.srcTopic.length));
         $rootScope.$apply();
       }
       // $scope.msgList.push({ avatar: 'http://ionicframework.com/img/docs/venkman.jpg', text: data.msg, is_sender: false});
@@ -58,18 +61,27 @@ angular.module('starter.services', ['ngResource'])
     });
   };
 
-  var constructMessage = function(userId) {
-     var str = {"cmd": "requestSession", "srcTopic": 'Topic-' + userId};
+  var constructMessage = function(toUserId) {
+     var str = {"cmd": "requestSession", "srcTopic": 'Topic-' + toUserId};
      return JSON.stringify(str);
   };
 
-  var requestSession = function(userId) {
-    console.log(userId)
-    sendMessage(userId, constructMessage(userId));
+  var constructConfirmMessage = function(userId) {
+     var str = {"cmd": "confirmSession", "srcTopic": 'Topic-' + userId};
+     return JSON.stringify(str);
+  };
+  var requestSession = function(confirmerId) {
+    console.log(confirmerId)
+    sendMessage(confirmerId, constructMessage(this.userId));
+  };
+
+  var confirmSession = function(requesterId) {
+    sendMessage(requesterId, constructConfirmMessage(this.userId));
   };
 
   return {
     init: init,
-    requestSession: requestSession
+    requestSession: requestSession,
+    confirmSession: confirmSession
   }
 });
