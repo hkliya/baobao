@@ -69,7 +69,9 @@ angular.module('starter.controllers', [])
     showConfirmDialog(requesterId);
   } else {
     console.log($rootScope.alertPopup);
-    $rootScope.alertPopup.close();
+    if ($rootScope.alertPopup) {
+      $rootScope.alertPopup.close();
+    }
   }
 
   $scope.msg = {text: ''};
