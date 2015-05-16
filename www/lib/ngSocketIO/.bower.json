@@ -1,0 +1,14 @@
+{
+  "name": "ngSocketIO",
+  "homepage": "https://github.com/mbenford/ngSocketIO",
+  "version": "0.2.0",
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.0",
+    "commit": "1e842cc59430283cbb6b8d4fded8799d2ed236d5"
+  },
+  "_source": "git://github.com/mbenford/ngSocketIO.git",
+  "_target": "~0.2.0",
+  "_originalSource": "mbenford/ngSocketIO"
+}

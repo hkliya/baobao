@@ -1,14 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $location) {
+.controller('DashCtrl', function($scope, $location, Users) {
   $scope.users = [];
   $scope.search = function() {
-    $scope.users = [
-      {id: 1, avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'张小花', status:'idle', gender:'f', bio: '我就是我'},
-      {id: 2, avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'谭金都', status:'idle', gender:'f', bio: '生活是一种修行'},
-      {id: 3, avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'王燕玲', status:'busy', gender:'f', bio: '不在读书，就在旅行'},
-      {id: 4, avatar:'http://ionicframework.com/img/docs/venkman.jpg', name:'何东洋', status:'idle', gender:'m', bio: '求交往'}
-    ];
+    $scope.users = Users.query();
+    console.log($scope.users);
   };
   $scope.startChatWith = function(userId) {
     $location.path('/tab/chats/' + userId);

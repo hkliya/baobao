@@ -8,6 +8,7 @@
     "jquery": "~2.1.4",
     "query-object": "~2.0.2",
     "yunba-javascript-sdk": "yunba/yunba-javascript-sdk",
-    "ngSocketIO": "mbenford/ngSocketIO#~0.2.0"
+    "ngSocketIO": "mbenford/ngSocketIO#~0.2.0",
+    "angular-resource": "~1.3.15"
   }
 }
