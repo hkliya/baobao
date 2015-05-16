@@ -16,5 +16,26 @@
         </button>
       </div>
     </div>
+
+    <div class="list">
+      <div class="card" ng-repeat="msg in msgList">
+        <div class="item item-text-wrap">
+          <a class="item item-avatar" href="#" ng-show="{{msg.is_sender}}">
+            <div class="row">
+              <div class="col col-75">
+                <p>{{msg.text}}</p>
+              </div>
+              <div class="col col-25">
+                <img src="{{msg.avatar}}" />
+              </div>
+            </div>
+          </a>
+          <a class="item item-avatar" href="#" ng-show="{{!msg.is_sender}}">
+            <img src="{{msg.avatar}}" />
+            <p>{{msg.text}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
