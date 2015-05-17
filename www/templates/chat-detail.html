@@ -5,6 +5,12 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="聊天">
+  <ion-nav-buttons side="right">
+    <button class="button button-assertive" ng-click="endConversation()">
+      <i class="ion ion-android-exit"></i>
+      结束
+    </button>
+  </ion-nav-buttons>
   <ion-content>
     <ul class="list">
       <li class="item no-border" ng-repeat="msg in messages()">

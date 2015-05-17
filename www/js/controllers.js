@@ -62,6 +62,20 @@ angular.module('starter.controllers', [])
     });
   };
 
+  var showFeedbackDialog = function() {
+    var myPopup = $ionicPopup.show({
+        templateUrl: '../templates/feedback.html',
+        title: '告诉对方你的感觉吧...',
+        scope: $scope,
+        buttons: [
+        ]
+      });
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+    $scope.feedbackPopup = myPopup;
+  };
+
   var isRequest = $location.search().isRequest;
   var requesterId = $location.path().match(/\/\w+\/(\d+)/)[1];
   console.log('isRequest:' + isRequest);
@@ -81,16 +95,26 @@ angular.module('starter.controllers', [])
       return;
     }
 
+    $scope.msg.text = '';
     Yunba.sendText(requesterId, text);
   }
 
   $scope.messages = function() {
     return $rootScope.messages;
   };
+
+  $scope.endConversation = function() {
+    showFeedbackDialog();
+  };
+
+  $scope.confirmFeedback = function(level) {
+    $location.path('/tab/dash')
+    $scope.feedbackPopup.close();
+  };
 })
 
 .controller('AccountCtrl', function($scope, $location) {
   $scope.logout = function() {
-    $location.path('/login');
+    $location.path('/login')
   };
 });
