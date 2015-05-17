@@ -9,7 +9,7 @@
     <ul class="list">
       <li class="item item-avatar item-text-wrap" ng-repeat="msg in messages()">
         <img src="{{msg.sender.avatar}}" />
-        <h2>{{msg.text}}</h2>
+        <div class="message_content_left">{{msg.text}}</div>
       </li>
     </ul>
   </ion-content>

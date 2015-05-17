@@ -1,0 +1,7 @@
+.message_content_left {
+  background: url(../img/message_left_bg.png) no-repeat;
+  background-size: cover;
+  padding: 5px 25px;
+  color: #fff;
+  font-size: 21px;
+}
