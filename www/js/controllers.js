@@ -18,8 +18,6 @@ angular.module('starter.controllers', [])
     Yunba.init(userId);
     $location.path('/tab/dash');
   };
-
-
 })
 .controller('DashCtrl', function($scope, $location, Users, $ionicPopup, Yunba, $rootScope) {
   $scope.users = [];
@@ -27,6 +25,9 @@ angular.module('starter.controllers', [])
     $scope.users = Users.query();
     console.log($scope.users);
   };
+
+  $scope.search();
+
   $scope.startChatWith = function(user) {
     Yunba.requestSession(user.id);
 
