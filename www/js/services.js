@@ -94,7 +94,7 @@ angular.module('starter.services', ['ngResource'])
 
   var sendText = function(to, text) {
     sendMessage(to, constructTextMessage(this.userId, text));
-    $rootScope.messages.push({'text': text, is_sender: true});
+    $rootScope.messages.push({'text': text, is_sender: true, sender: { avatar: 'http://ionicframework.com/img/docs/venkman.jpg'}});
   };
 
   return {

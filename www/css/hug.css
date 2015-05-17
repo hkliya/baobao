@@ -1,7 +1,25 @@
-.message_content_left {
-  background: url(../img/message_left_bg.png) no-repeat;
+.message {
   background-size: cover;
-  padding: 5px 25px;
+  font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.message-content-left {
+  background: url(../img/message_left_bg.png) no-repeat;
+  background-position: left 0px center;
+  padding-left: 25px;
+  color: #000;
+}
+
+.message-content-right {
+  background: url(../img/message_right_bg.png) no-repeat;
+  background-position: right 0px center;
+  padding-right: 10px;
+  padding-left: 5px;
   color: #fff;
-  font-size: 21px;
+}
+
+.no-border {
+  border: 0px;
 }
