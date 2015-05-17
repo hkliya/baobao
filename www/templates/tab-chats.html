@@ -1,16 +1,10 @@
-<ion-view view-title="Chats">
+<ion-view view-title="聊天">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
+    <div class="card">
+      <div class="item item-text-wrap">
+        去广场找心仪的对象聊天吧...
+      </div>
+    </div>
     </ion-list>
   </ion-content>
 </ion-view>
