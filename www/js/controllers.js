@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($scope, $http, $location, Yunba, $rootScope) {
   var getUserIdFromUsername = function(username) {
-    if (username === 'a') {
+    if (username === 'tjd@163.com') {
       return 1;
     }
     return 2;
@@ -31,9 +31,9 @@ angular.module('starter.controllers', [])
     Yunba.requestSession(user.id);
 
     var alertPopup = $ionicPopup.alert({
-      title: 'Waiting...',
-      template: 'Wait ' + user.name + ' to confirm...',
-      okText: 'Cancel',
+      title: '请稍等...',
+      template: '等待' + user.name + ' 确认...',
+      okText: '取消',
       okType: 'button-assertive'
     });
     alertPopup.then(function(res) {
@@ -50,8 +50,8 @@ angular.module('starter.controllers', [])
 .controller('ChatDetailCtrl', function($scope, $stateParams, $location, $ionicPopup, Yunba, $rootScope) {
   var showConfirmDialog = function(userId) {
     var confirmPopup = $ionicPopup.confirm({
-      title: 'Accept session',
-      template: 'Are you sure you want to chat with tjd?'
+      title: '收到邀请',
+      template: '确定要和对方聊天吗？'
     });
     confirmPopup.then(function(res) {
       if(res) {
